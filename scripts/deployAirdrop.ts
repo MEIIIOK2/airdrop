@@ -21,12 +21,19 @@ export async function run(provider: NetworkProvider) {
     //         amount: toNano('3'),
     //     }
     // ];
+    let finalDict: any = []
     participants.forEach(element => {
         try{
             entries.push(
                 {
                     address: Address.parse(element.address),
                     amount: toNano(element.sum/100000)
+                }
+            )
+            finalDict.push(
+                {
+                    address: element.address,
+                    amount: element.sum/100000
                 }
             )
         }
@@ -68,7 +75,7 @@ export async function run(provider: NetworkProvider) {
         )
     );
     var fs = require('fs');
-    fs.writeFile('data.json', JSON.stringify({address: airdrop.address.toString() ,cell: dictCell.toBoc().toString('base64')}), 'utf8', function(err: any) {
+    fs.writeFile('data.json', JSON.stringify({address: airdrop.address.toString() ,cell: dictCell.toBoc().toString('base64'), entries: finalDict}), 'utf8', function(err: any) {
         if (err) throw err;
             console.log('complete');
         });
