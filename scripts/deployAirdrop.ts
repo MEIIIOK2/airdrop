@@ -62,7 +62,7 @@ export async function run(provider: NetworkProvider) {
     
     const merkleRoot = BigInt('0x' + dictCell.hash().toString('hex'));
 
-    const jettonMinterAddress = Address.parse('EQCrAYQnZsbF2I0j7OTPVX-cILNdLFSqtmhbo82Wc6WcctEc');
+    const jettonMinterAddress = Address.parse('EQABBW_uifkTMvvR0PHq3NoNHDTDoEgSMToU8oaTkO-Hif5A');
     const jettonMinter = provider.open(JettonMinter.createFromAddress(jettonMinterAddress));
 
     const airdrop = provider.open(
