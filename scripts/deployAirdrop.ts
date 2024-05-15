@@ -27,13 +27,13 @@ export async function run(provider: NetworkProvider) {
             entries.push(
                 {
                     address: Address.parse(element.address),
-                    amount: toNano(element.sum/100000)
+                    amount: toNano(element.sum/1000000)
                 }
             )
             finalDict.push(
                 {
                     address: element.address,
-                    amount: element.sum/100000
+                    amount: element.sum/1000000
                 }
             )
         }
