@@ -2,7 +2,7 @@ import { Address, address, beginCell, toNano } from '@ton/core';
 import { Airdrop, AirdropEntry, generateEntriesDictionary } from '../wrappers/Airdrop';
 import { compile, NetworkProvider } from '@ton/blueprint';
 import { JettonMinter } from '../wrappers/JettonMinter';
-import participants from '../airdrop.json';
+import participants from '../airdrop2.json';
 
 export async function run(provider: NetworkProvider) {
     // console.log(participants);
