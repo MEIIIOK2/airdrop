@@ -18,12 +18,20 @@ export type AirdropConfig = {
 };
 
 export function airdropConfigToCell(config: AirdropConfig): Cell {
-    return beginCell()
-        .storeUint(0, 2)
-        .storeUint(config.merkleRoot, 256)
-        .storeRef(config.helperCode)
-        .storeUint(Math.floor(Math.random() * 1e9), 64)
-        .endCell();
+    var cell = beginCell()
+    .storeUint(0, 2)
+    .storeUint(config.merkleRoot, 256)
+    .storeRef(config.helperCode)
+    .storeUint(Math.floor(Math.random() * 1e9), 64)
+    .endCell();
+    console.log('merkleRoot: ' + config.merkleRoot);
+    console.log('helper code: ' + config.helperCode.toBoc().toString('base64'));
+    console.log('_____-');
+    
+    
+    console.log(cell.toBoc().toString('hex'));
+    
+    return cell
 }
 
 export type AirdropEntry = {
@@ -63,6 +71,7 @@ export class Airdrop implements Contract {
     static createFromConfig(config: AirdropConfig, code: Cell, workchain = 0) {
         const data = airdropConfigToCell(config);
         const init = { code, data };
+        
         return new Airdrop(contractAddress(workchain, init), init);
     }
 

@@ -25,6 +25,8 @@ export async function run(provider: NetworkProvider) {
             await compile('AirdropHelper')
         )
     );
+    console.log(helper.address.toString());
+    
 
     if (!(await provider.isContractDeployed(helper.address))) {
         await helper.sendDeploy(provider.sender());
